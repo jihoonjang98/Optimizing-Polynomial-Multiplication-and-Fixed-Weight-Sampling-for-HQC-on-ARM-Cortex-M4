@@ -13,7 +13,7 @@ VMOV-minimized butterfly assembly of Section 3.
 HQC_m4/
   hqc-1/  hqc-3/  hqc-5/                       Optimized HQC, no caching
   cache_hqc-1/  cache_hqc-3/  cache_hqc-5/     Same, with public-key caching (Section 5)
-section3/
+vmov_optimizer/
   src/                                         XOR-reordering VMOV optimizer (Section 3)
   data/                                        Baseline and optimized XOR sequences
   Case_AESmixcolumns.pdf                       Supplementary note: the AES MixColumns case study
@@ -54,11 +54,11 @@ Cycle counts come from the pqm4 `speed` benchmark and peak stack from the
   multiplication, speed, component, and memory tables.
 - `HQC_m4/cache_hqc-{1,3,5}` produce the "Caching" column of the caching table
   and the "Ours (caching)" rows of the memory table.
-- `section3/src` implements the dirty-aware register allocation and
-  XOR-operation reordering of Section 3. `section3/data/<level>/baseline.s` are
+- `vmov_optimizer/src` implements the dirty-aware register allocation and
+  XOR-operation reordering of Section 3. `vmov_optimizer/data/<level>/baseline.s` are
   the input XOR sequences and `reorders.s` the optimized assembly whose
-  per-function EOR and VMOV counts appear in Table 5. See `section3/README.md`.
-- `section3/Case_AESmixcolumns.pdf` is a short supplementary note that applies the
+  per-function EOR and VMOV counts appear in Table 5. See `vmov_optimizer/README.md`.
+- `vmov_optimizer/Case_AESmixcolumns.pdf` is a short supplementary note that applies the
   same optimization to the 92-XOR sequence of AES MixColumns, the example
   mentioned in the conclusion of the paper, with the full instruction listings.
 
@@ -67,4 +67,4 @@ Cycle counts come from the pqm4 `speed` benchmark and peak stack from the
 See `LICENSE`. The FAFFT, radix-16, and RS/RM decoder code in `HQC_m4` builds on
 the public-domain implementations of Chen, Chou, and Krausz and of Chen et al.
 (TCHES 2026), and on the HQC reference implementation; the remaining parts of
-`HQC_m4` and all of `section3` are by the authors of the paper.
+`HQC_m4` and all of `vmov_optimizer` are by the authors of the paper.
